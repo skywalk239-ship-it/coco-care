@@ -622,9 +622,11 @@ function resizeImage(file, maxPx) {
 async function deletePhoto(e, id) {
   e.stopPropagation();
   if (!confirm('이 사진을 삭제할까요?')) return;
-  await db.storage.from(BUCKET).remove([id]);
+  const { error } = await db.storage.from(BUCKET).remove([id]);
+  if (error) { showToast('삭제 실패 😢 ' + error.message); return; }
   photos = photos.filter(p => p.id !== id);
   renderPhotos();
+  showToast('🗑️ 삭제됐어요');
 }
 
 // 기존 사진 불러오기
