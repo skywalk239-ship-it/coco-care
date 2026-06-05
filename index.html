@@ -165,8 +165,9 @@ body::after {
   position: absolute;
   top: 3px; bottom: 3px;
   border-radius: 12px;
-  background: var(--tab-active-bg);
-  border: 1px solid var(--tab-active-border);
+  background: rgba(126,184,247,0.28);
+  border: 1.5px solid rgba(126,184,247,0.65);
+  box-shadow: 0 0 12px rgba(126,184,247,0.2);
   transition: left 0.3s cubic-bezier(.4,0,.2,1), width 0.3s cubic-bezier(.4,0,.2,1);
   pointer-events: none;
   z-index: 0;
@@ -184,8 +185,8 @@ body::after {
   user-select: none;
 }
 .tab:active { opacity: 0.8; }
-.tab-date { font-size: 13px; font-weight: 600; color: var(--text2); transition: color 0.2s; }
-.tab.active .tab-date { color: var(--accent2); }
+.tab-date { font-size: 13px; font-weight: 500; color: rgba(200,220,240,0.38); transition: color 0.2s; }
+.tab.active .tab-date { color: #fff; font-weight: 700; }
 
 .done-banner {
   display: none;
@@ -430,6 +431,32 @@ body::after {
   display: flex; align-items: center; justify-content: center;
 }
 
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.3px;
+  padding-left: 2px;
+  margin-bottom: -4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bottom-note {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text2);
+  line-height: 1.7;
+  padding: 10px 16px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .reset-btn {
   align-self: center;
   background: transparent;
@@ -519,6 +546,7 @@ body::after {
   </div>
 
   <div class="done-banner" id="done-banner">🎉 오늘 미션 완료! 코코가 행복해요 🐾</div>
+  <div class="section-label">📋 해야할 일</div>
   <div class="checklist" id="checklist"></div>
 
   <!-- 사진 섹션 -->
@@ -541,6 +569,7 @@ body::after {
     <button class="lightbox-nav lightbox-next" onclick="navPhoto(1);event.stopPropagation()">›</button>
   </div>
 
+  <div class="bottom-note">위의 체크리스트 모두 하시고<br>30분 이상 체류하면서 코코랑 있어주시기 바랍니다 🐾</div>
   <button class="reset-btn" onclick="resetDay()">↩ 오늘 초기화</button>
   <div class="sync-row">
     <div class="sync-dot synced" id="sync-dot"></div>
